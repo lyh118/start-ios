@@ -10,8 +10,21 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        
+        // 뮤터블 배열 객체를 만들고 items 변수에 그 주소를 저장한다
+        NSMutableArray *items = [[NSMutableArray alloc] init];
+        
+        [items addObject:@"One"];
+        [items addObject:@"Two"];
+        [items addObject:@"Three"];
+        
+        [items insertObject:@"Zero" atIndex:0];
+        
+        for (NSString *item in items) {
+            NSLog(@"%@", item);
+        }
+        
+        items = nil;
     }
     return 0;
 }
