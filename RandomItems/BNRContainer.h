@@ -18,6 +18,8 @@
     int _price;
 }
 
+- (int)getPriceAll;
+
 - (void)setSubitems: (BNRItem *)subitems;
 - (NSMutableArray *)subitems;
 

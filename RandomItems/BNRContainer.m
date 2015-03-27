@@ -10,11 +10,26 @@
 
 @implementation BNRContainer
 
-- (instancetype) initWithSubitems
+- (int)getPriceAll
+{
+    int allPrice = _price;
+    
+    NSMutableArray *items = _subitems;
+    for (BNRItem *item in items) {
+        allPrice += item.valueInDollars;
+    }
+    
+    return allPrice;
+}
+
+- (instancetype) initWithSubitems: (NSString *)name
+                    initWithPrice: (int)price
 {
     self = [super init];
     
     if (self) {
+        _containerName = name;
+        _price = price;
         _subitems = [[NSMutableArray alloc] init];
     }
     return self;
@@ -22,7 +37,8 @@
 
 - (instancetype)init
 {
-    return [self initWithSubitems];
+    return [self initWithSubitems:@"Gold_Container"
+                    initWithPrice:100];
 }
 
 - (void)setSubitems: (BNRItem *)subitems
@@ -50,6 +66,24 @@
 - (int)price
 {
     return _price;
+}
+
+- (NSString *)description
+{
+    NSString *items;
+    for (NSString *item in self.subitems) {
+        NSLog(@"%@", item);
+    }
+    
+    NSString *descriptionString =
+    [[NSString alloc] initWithFormat:
+            @"\n====== BNRContainer ======\nContainerName=%@\nContainerPrice=%d\nAllPrice=%d\nSubItems=%@",
+            self.containerName,
+            self.price,
+            [self getPriceAll],
+            self.subitems];
+    
+    return descriptionString;
 }
 
 @end

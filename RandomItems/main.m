@@ -62,14 +62,28 @@ int main(int argc, const char * argv[]) {
         
         
         // #4.금메달 과제
-        NSLog(@"======= #4.금메달 과제 ======");
+        NSLog(@"\n======= #4.금메달 과제 ======");
         BNRContainer *container = [[BNRContainer alloc] init];
-        [container setSubitems:item2];
+        for (int i=0; i<5; i++) {
+            BNRItem *goldItem = [BNRItem randomItem];
+            [container setSubitems:goldItem];
+        }
+        
+        BNRContainer *container2 = [[BNRContainer alloc] init];
+        for (int i=0; i<2; i++) {
+            BNRItem *goldItem2 = [BNRItem randomItem];
+            [container2 setSubitems:goldItem2];
+        }
+        [container setSubitems:container2];
+        
+        //NSLog(@"ALL_PRICE=%d", [container getPriceAll]);
         
         // Array 안에 BNRItem 객체인데 왜 NSString 으로 받나요??
         for (NSString *item3 in container.subitems) {
-            NSLog(@"%@", item3);
+            //NSLog(@"%@", item3);
         }
+        
+        NSLog(@"%@", container);
         
     }
     return 0;
