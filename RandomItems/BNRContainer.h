@@ -27,5 +27,4 @@
 - (void)setPrice: (int)price;
 - (int)price;
 
-
 @end

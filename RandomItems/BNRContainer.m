@@ -52,5 +52,4 @@
     return _price;
 }
 
-
 @end
